@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Messenger</title>
+</head>
+<body>
+    <div id="chat">
+        <div id="chat-window">
+            <div id="chat-messages"></div>
+        </div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        // Simulated messages (replace with real functionality)
+        const messages = [
+            { sender: "User 1", text: "Hello!" },
+            { sender: "User 2", text: "Hi there!" },
+        ];
+
+        // Function to display messages
+        function displayMessages() {
+            const chatMessages = document.getElementById("chat-messages");
+            chatMessages.innerHTML = "";
+            messages.forEach(message => {
+                const messageDiv = document.createElement("div");
+                messageDiv.textContent = `${message.sender}: ${message.text}`;
+                chatMessages.appendChild(messageDiv);
+            });
+        }
+
+        // Function to send a message
+        function sendMessage() {
+            const messageInput = document.getElementById("message-input");
+            const newMessage = messageInput.value;
+            if (newMessage) {
+                messages.push({ sender: "User 1", text: newMessage }); // Simulated sender (replace with user authentication)
+                messageInput.value = "";
+                displayMessages();
+            }
+        }
+
+        // Initial display of messages
+        displayMessages();
+    </script>
+</body>
+</html>
